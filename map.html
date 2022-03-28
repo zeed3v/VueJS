@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        /*fetch('https://pokeapi.co/api/v2/pokemon/')
+            .then( res => res.json())
+            .then(data => {
+                //console.log(data.results);
+                let arrayNombres = []
+                data.results.forEach(element => {
+                    //console.log(element.name);
+                    arrayNombres.push(element.name);
+                });
+
+                console.log(arrayNombres);
+            })
+            .catch(error => console.log(error));*/
+
+        const getPoke = async() => {
+            try {
+              const res = await fetch('https://pokeapi.co/api/v2/pokemon/');
+              const data = await res.json();
+              //console.log(data.results);
+              const arrayNombres = data.results.map(poke => poke.name);
+              console.log(arrayNombres);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getPoke();
+
+    </script>
+    
+</body>
+</html>
